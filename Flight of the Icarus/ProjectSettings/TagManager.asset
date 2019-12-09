@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Kite
+  - Fire
+  - Debris
+  - Townspeople
+  - LeftWall
+  - RightWall
   layers:
   - Default
   - TransparentFX

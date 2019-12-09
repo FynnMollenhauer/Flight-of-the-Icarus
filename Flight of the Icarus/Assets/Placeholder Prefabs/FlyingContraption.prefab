@@ -745,7 +745,7 @@ GameObject:
   - component: {fileID: 1859884192452246608}
   m_Layer: 0
   m_Name: FlyingContraption
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -783,7 +783,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2, y: 12, z: 1}
-  m_Center: {x: 0, y: -5.5, z: 0}
+  m_Center: {x: 0, y: -5, z: 0}
 --- !u!54 &4754356872664952362
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -813,8 +813,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityMultiplier: 0
+  speedMultiplier: 0
   steeringSpeed: 1
   panningSpeed: 0
+  antigravCollected: 0
 --- !u!1 &863495420274302831
 GameObject:
   m_ObjectHideFlags: 0
