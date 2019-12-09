@@ -1752,6 +1752,16 @@ PrefabInstance:
       propertyPath: maxGravity
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1859884192452246608, guid: 829ffff8382324099b602c93d03a2854,
+        type: 3}
+      propertyPath: steeringSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859884192452246608, guid: 829ffff8382324099b602c93d03a2854,
+        type: 3}
+      propertyPath: panningSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 863495420152304542, guid: 829ffff8382324099b602c93d03a2854,
         type: 3}
       propertyPath: m_Name
@@ -1760,17 +1770,17 @@ PrefabInstance:
     - target: {fileID: 863495420152304541, guid: 829ffff8382324099b602c93d03a2854,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 863495420152304541, guid: 829ffff8382324099b602c93d03a2854,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 863495420152304541, guid: 829ffff8382324099b602c93d03a2854,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 863495420152304541, guid: 829ffff8382324099b602c93d03a2854,
         type: 3}
@@ -1812,6 +1822,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 863495420081278807, guid: 829ffff8382324099b602c93d03a2854,
+        type: 3}
+      propertyPath: m_TagString
+      value: Kite
+      objectReference: {fileID: 0}
+    - target: {fileID: 863495420081278806, guid: 829ffff8382324099b602c93d03a2854,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.00000019861236
+      objectReference: {fileID: 0}
+    - target: {fileID: 863495420081278806, guid: 829ffff8382324099b602c93d03a2854,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 863495420081278806, guid: 829ffff8382324099b602c93d03a2854,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 863495420081278806, guid: 829ffff8382324099b602c93d03a2854,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.00000019861236
+      objectReference: {fileID: 0}
+    - target: {fileID: 863495420081278806, guid: 829ffff8382324099b602c93d03a2854,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -179.99998
+      objectReference: {fileID: 0}
     - target: {fileID: 863495420081278802, guid: 829ffff8382324099b602c93d03a2854,
         type: 3}
       propertyPath: m_Mesh
@@ -1822,6 +1862,16 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1868478553}
+    - target: {fileID: 1274923938421962979, guid: 829ffff8382324099b602c93d03a2854,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4754356872664952362, guid: 829ffff8382324099b602c93d03a2854,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 829ffff8382324099b602c93d03a2854, type: 3}
@@ -5292,7 +5342,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378322894}
-  m_LocalRotation: {x: 0.045981035, y: 0.102476515, z: -0.004742077, w: 0.99366087}
+  m_LocalRotation: {x: 0.0050331843, y: -0.992992, z: 0.045950085, w: 0.10876676}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5842,7 +5892,7 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
     Value: 0
-    m_MaxSpeed: 150
+    m_MaxSpeed: 200
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -5889,7 +5939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 420647082}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.122697, y: 5.5, z: -28.368565}
+  m_LocalPosition: {x: 6.4941463, y: 1.5, z: 35.288666}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 920207306}
@@ -9732,7 +9782,7 @@ PrefabInstance:
     - target: {fileID: 3151597253486708979, guid: b3a6c3fe1dfa8410685d4260d4d3eecd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -56
+      value: -65
       objectReference: {fileID: 0}
     - target: {fileID: 3151597253486708979, guid: b3a6c3fe1dfa8410685d4260d4d3eecd,
         type: 3}
@@ -11977,7 +12027,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920207304}
-  m_LocalRotation: {x: 0.08204537, y: 0.10223663, z: -0.008461359, w: 0.9913348}
+  m_LocalRotation: {x: 0.008980786, y: -0.9906675, z: 0.08199015, w: 0.108512156}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -12278,7 +12328,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948868164}
-  m_LocalRotation: {x: 0.06399991, y: 0.10237364, z: -0.0066004563, w: 0.99266315}
+  m_LocalRotation: {x: 0.0070055285, y: -0.991995, z: 0.06395684, w: 0.10865755}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -12663,8 +12713,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.08204538, y: 0.10223664, z: -0.008461362, w: 0.9913348}
-  m_LocalPosition: {x: -7.122697, y: 5.5, z: -28.368565}
+  m_LocalRotation: {x: -0.008980741, y: 0.9906675, z: -0.08199016, w: -0.10851215}
+  m_LocalPosition: {x: 6.4941463, y: 1.5, z: 35.288666}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4029479}
@@ -16065,7 +16115,7 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
     Value: 0
-    m_MaxSpeed: 150
+    m_MaxSpeed: 200
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -21147,7 +21197,7 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
     Value: 0
-    m_MaxSpeed: 150
+    m_MaxSpeed: 200
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -21647,7 +21697,7 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
     Value: 0
-    m_MaxSpeed: 150
+    m_MaxSpeed: 200
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X

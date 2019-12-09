@@ -812,7 +812,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7727c596a392845b8833842f4c296413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GravityMultiplier: 0
+  gravityMultiplier: 0
+  steeringSpeed: 1
+  panningSpeed: 0
 --- !u!1 &863495420274302831
 GameObject:
   m_ObjectHideFlags: 0
