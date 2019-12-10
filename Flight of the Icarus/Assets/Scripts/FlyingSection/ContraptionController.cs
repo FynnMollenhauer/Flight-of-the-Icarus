@@ -8,7 +8,7 @@ public class ContraptionController : MonoBehaviour
 {
     float gravity;
     float speed;
-    int health;
+    public int health;
 
     public float gravityMultiplier;
     public float speedMultiplier;
@@ -22,6 +22,8 @@ public class ContraptionController : MonoBehaviour
     public int damageTaken;
     int obtainedHealth;
 
+    public GameObject[] passengers;
+
 
     void Start()
     {
@@ -30,13 +32,31 @@ public class ContraptionController : MonoBehaviour
         defaultHealth = 2;
         damageTaken = 0;
 
+        passengers = GameObject.FindGameObjectsWithTag("Townspeople");
+
+        switch (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().FallenPassengers)
+        {
+            case 1:
+                passengers[0].SetActive(false);
+                break;
+            case 2:
+                passengers[0].SetActive(false);
+                passengers[1].SetActive(false);
+                break;
+            case 3:
+                passengers[0].SetActive(false);
+                passengers[1].SetActive(false);
+                passengers[2].SetActive(false);
+                break;
+        }
+
     }
 
 
     void FixedUpdate()
     {
-        Debug.Log(health);
-        gravity = (gravityMultiplier + ((90.0f - (UnityEditor.TransformUtils.GetInspectorRotation(GameObject.FindGameObjectWithTag("Kite").transform).x * -1.0f)) / 20.0f) - (antigravCollected * 0.01f)) * -1.0f;
+        Debug.Log(gravity);
+        gravity = (gravityMultiplier + ((90.0f - (UnityEditor.TransformUtils.GetInspectorRotation(GameObject.FindGameObjectWithTag("Kite").transform).x * -1.0f)) / 20.0f) - (antigravCollected * 0.01f) - (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().FallenPassengers / 10.0f)) * -1.0f;
         if (gravity >= -0.2f)
         {
             gravity = -0.2f;
@@ -90,6 +110,8 @@ public class ContraptionController : MonoBehaviour
 
         if (health <= 0)
         {
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().ResetAmount += 1;
+
             Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
         }
