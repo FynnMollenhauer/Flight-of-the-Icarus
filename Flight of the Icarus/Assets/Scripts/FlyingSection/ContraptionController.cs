@@ -55,7 +55,6 @@ public class ContraptionController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(gravity);
         gravity = (gravityMultiplier + ((90.0f - (UnityEditor.TransformUtils.GetInspectorRotation(GameObject.FindGameObjectWithTag("Kite").transform).x * -1.0f)) / 20.0f) - (antigravCollected * 0.01f) - (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().FallenPassengers / 10.0f)) * -1.0f;
         if (gravity >= -0.2f)
         {
