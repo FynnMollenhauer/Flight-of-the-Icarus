@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityStandardAssets.Utility;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -13,7 +14,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
 
-        
+        public bool isActivePlayer = true;
+
         private void Start()
         {
             // get the transform of the main camera
@@ -44,32 +46,41 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         // Fixed update is called in sync with physics
         private void FixedUpdate()
-        {
-            // read inputs
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            float v = CrossPlatformInputManager.GetAxis("Vertical");
-            bool crouch = Input.GetKey(KeyCode.C);
-
-            // calculate move direction to pass to character
-            if (m_Cam != null)
+        {   if (isActivePlayer == false && gameObject.GetComponent<FollowHandHolding>().isHandHolding == false)
             {
-                // calculate camera relative direction to move:
-                m_CamForward = Vector3.Scale(m_Cam.forward, new Vector3(1, 0, 1)).normalized;
-                m_Move = v*m_CamForward + h*m_Cam.right;
+                // gameObject.GetComponent<ThirdPersonCharacter>().enabled = false;
+                gameObject.GetComponent<ThirdPersonCharacter>().Move(new Vector3(0, 0, 0), false, false);
             }
             else
             {
-                // we use world-relative directions in the case of no main camera
-                m_Move = v*Vector3.forward + h*Vector3.right;
-            }
+               // gameObject.GetComponent<ThirdPersonCharacter>().enabled = true;
+
+                // read inputs
+                float h = CrossPlatformInputManager.GetAxis("Horizontal");
+                float v = CrossPlatformInputManager.GetAxis("Vertical");
+                bool crouch = Input.GetKey(KeyCode.Tilde);
+
+                // calculate move direction to pass to character
+                if (m_Cam != null)
+                {
+                    // calculate camera relative direction to move:
+                    m_CamForward = Vector3.Scale(m_Cam.forward, new Vector3(1, 0, 1)).normalized;
+                    m_Move = v * m_CamForward + h * m_Cam.right;
+                }
+                else
+                {
+                    // we use world-relative directions in the case of no main camera
+                    m_Move = v * Vector3.forward + h * Vector3.right;
+                }
 #if !MOBILE_INPUT
-			// walk speed multiplier
-	        if (Input.GetKey(KeyCode.LeftShift)) m_Move *= 0.5f;
+                // walk speed multiplier
+                if (Input.GetKey(KeyCode.LeftShift)) m_Move *= 0.5f;
 #endif
 
-            // pass all parameters to the character control script
-            m_Character.Move(m_Move, crouch, m_Jump);
-            m_Jump = false;
+                // pass all parameters to the character control script
+                m_Character.Move(m_Move, crouch, m_Jump);
+                m_Jump = false;
+            }
         }
     }
 }
