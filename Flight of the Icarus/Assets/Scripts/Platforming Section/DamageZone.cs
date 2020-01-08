@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DamageZone : MonoBehaviour
 {
@@ -8,16 +9,34 @@ public class DamageZone : MonoBehaviour
 	{
 		if (!other.CompareTag("Player")) return;
 
-		if (other.name == "Ike")
-		{
-			GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().IkeHealth -= 1;
-		}
-		else if (other.name == "Otis")
-		{
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().OtisHealth -= 1;
-		}
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
 
-        other.GetComponent<Transform>().position = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().lastCheckpoint;
-	}
+        if (other.name == "Ike")
+		{
+            if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().IkeHealth > 1)
+            {
+                GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().IkeHealth -= 1;
+                other.GetComponent<Transform>().position = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().ikeLastCheckpoint;
+            }
+            else if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().IkeHealth <= 1)
+            {
+                SceneManager.LoadScene(sceneName);
+            }
+        }
+
+        else if (other.name == "Otis")
+        {
+            if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().OtisHealth > 1)
+            {
+                GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().OtisHealth -= 1;
+                other.GetComponent<Transform>().position = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().ikeLastCheckpoint;
+            }
+            else if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().OtisHealth <= 1)
+            {
+                SceneManager.LoadScene(sceneName);
+            }
+        }
+    }
     
 }

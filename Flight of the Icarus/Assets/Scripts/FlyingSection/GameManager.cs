@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
     public int IkeHealth;
     public int OtisHealth;
 
-    public Vector3 lastCheckpoint;
+    public Vector3 ikeLastCheckpoint;
+    public Vector3 otisLastCheckpoint;
    
     private void Awake()
     {
@@ -41,6 +42,9 @@ public class GameManager : MonoBehaviour
         IkeHealth = 4;
         OtisHealth = 2;
 
+        ikeLastCheckpoint = new Vector3(3, -1.5f, -65.5f);
+        otisLastCheckpoint = new Vector3(3, -1.5f, -65.5f);
+
         if (ResetAmount >= FallChance)
         {
             ResetAmount = FallChance;
@@ -50,15 +54,14 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         playerCharacters = GameObject.FindGameObjectsWithTag("Player");
-        // Create a temporary reference to the current scene.
+
         Scene currentScene = SceneManager.GetActiveScene();
 
-        // Retrieve the name of this scene.
         string sceneName = currentScene.name;
 
         if (sceneName == "PlatformingLevel")
         {
-            if(Input.GetKeyDown(KeyCode.C))
+            if (Input.GetKeyDown(KeyCode.C))
         {
                 for (int i = 0; i < playerCharacters.Length; i++)
                 {
