@@ -4,7 +4,7 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
 namespace UnityStandardAssets.Utility
 {
-    public class FollowTarget : MonoBehaviour
+    public class CameraStatic : MonoBehaviour
     {
         public Transform target;
         public Vector3 offset = new Vector3(0f, 7.5f, 0f);
@@ -38,7 +38,7 @@ namespace UnityStandardAssets.Utility
         private void LateUpdate()
         {
             transform.Rotate(0.0f, 0.0f, 0.0f, Space.World);
-            transform.position = target.position + offset;
+            transform.position = (target.position + offset);
 
         }
     }

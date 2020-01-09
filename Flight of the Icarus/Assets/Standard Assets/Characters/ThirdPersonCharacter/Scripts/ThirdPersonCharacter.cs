@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -9,12 +10,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 	{
 		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
-		[SerializeField] float m_JumpPower = 12f;
-		[Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
+		[SerializeField] float m_JumpPower = 10f;
+        [SerializeField] float m_MidairPower = 7f;
+        [SerializeField] float m_JumpSpeedMultiplier = 0.2f;
+        [Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
 		[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
 		[SerializeField] float m_MoveSpeedMultiplier = 1f;
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
 		[SerializeField] float m_GroundCheckDistance = 0.1f;
+        
 
 		Rigidbody m_Rigidbody;
 		Animator m_Animator;
@@ -28,6 +32,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
+
+        private GameObject mainCamera;
 
 
 		void Start()
@@ -66,7 +72,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 			else
 			{
-				HandleAirborneMovement();
+				HandleAirborneMovement(move);
 			}
 
 			ScaleCapsuleForCrouching(crouch);
@@ -154,13 +160,19 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		}
 
 
-		void HandleAirborneMovement()
+		void HandleAirborneMovement(Vector3 move)
 		{
-			// apply extra gravity from multiplier:
-			Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
+            mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+            // apply extra gravity from multiplier:
+            Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
 			m_Rigidbody.AddForce(extraGravityForce);
 
 			m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
+            if (mainCamera.GetComponent<CameraFromBehind>().enabled == false)
+            {
+                m_Rigidbody.velocity = new Vector3(CrossPlatformInputManager.GetAxis("Horizontal") * m_MidairPower, gameObject.GetComponent<Rigidbody>().velocity.y, CrossPlatformInputManager.GetAxis("Vertical") * m_MidairPower);
+            }
+            
 		}
 
 
@@ -169,9 +181,17 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// check whether conditions are right to allow a jump:
 			if (jump && !crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
 			{
-				// jump!
-				m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
-				m_IsGrounded = false;
+                // jump!
+                if (mainCamera.GetComponent<CameraFromBehind>().enabled == false)
+                {
+                    m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x * m_JumpSpeedMultiplier, m_JumpPower, m_Rigidbody.velocity.z * m_JumpSpeedMultiplier);
+                }
+                else
+                {
+                    m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x * m_MoveSpeedMultiplier, m_JumpPower, m_Rigidbody.velocity.z * m_MoveSpeedMultiplier);
+                }
+
+                m_IsGrounded = false;
 				m_Animator.applyRootMotion = false;
 				m_GroundCheckDistance = 0.1f;
 			}
