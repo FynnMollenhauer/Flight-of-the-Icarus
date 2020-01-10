@@ -13,7 +13,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[SerializeField] float m_JumpPower = 10f;
         [SerializeField] float m_MidairPower = 7f;
         [SerializeField] float m_JumpSpeedMultiplier = 0.2f;
-        [Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
+        [Range(1f, 4f)][SerializeField] float m_OriginalGravityMultiplier = 2f;
+		[SerializeField] float m_GravityMultiplier;
 		[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
 		[SerializeField] float m_MoveSpeedMultiplier = 1f;
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
@@ -43,14 +44,34 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_Capsule = GetComponent<CapsuleCollider>();
 			m_CapsuleHeight = m_Capsule.height;
 			m_CapsuleCenter = m_Capsule.center;
+			m_OriginalGravityMultiplier = 2f;
 
 			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
 
 		}
 
+        private void Update()
+        {
+            if (gameObject.name == "Ike")
+            {
 
-		public void Move(Vector3 move, bool crouch, bool jump)
+				m_GravityMultiplier = m_OriginalGravityMultiplier - (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().ikeAntigrav / 100);
+
+			}
+            else if (gameObject.name == "Otis")
+            {
+				m_GravityMultiplier = m_OriginalGravityMultiplier - (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().otisAntigrav / 100);
+			}
+
+			if (m_GravityMultiplier < 1)
+            {
+				m_GravityMultiplier = 1;
+            }
+		}
+
+
+        public void Move(Vector3 move, bool crouch, bool jump)
 		{
 
 			// convert the world relative moveInput vector into a local-relative

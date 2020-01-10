@@ -23,14 +23,14 @@ namespace UnityStandardAssets.Utility
 
             if (gameObject.GetComponent<ThirdPersonUserControl>().isActivePlayer == false && isHandHolding == false && Vector3.Distance(target.position, transform.position) <= 5)
             {
-                if (Input.GetKeyDown(KeyCode.H))
+                if (Input.GetKeyDown(KeyCode.Q))
                 {
                     isHandHolding = true;
                 }
             }
             else if (gameObject.GetComponent<ThirdPersonUserControl>().isActivePlayer == false && isHandHolding == true)
             {
-                if (Input.GetKeyDown(KeyCode.H))
+                if (Input.GetKeyDown(KeyCode.Q))
                 {
                     isHandHolding = false;
                 }
