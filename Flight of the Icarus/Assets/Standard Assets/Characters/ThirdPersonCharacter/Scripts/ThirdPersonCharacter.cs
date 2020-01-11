@@ -10,7 +10,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 	{
 		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
-		[SerializeField] float m_JumpPower = 10f;
+		public float m_JumpPower = 10f;
         [SerializeField] float m_MidairPower = 7f;
         [SerializeField] float m_JumpSpeedMultiplier = 0.2f;
         [Range(1f, 4f)][SerializeField] float m_OriginalGravityMultiplier = 2f;

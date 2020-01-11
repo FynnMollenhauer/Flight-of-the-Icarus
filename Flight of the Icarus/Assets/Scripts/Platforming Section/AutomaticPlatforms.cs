@@ -60,6 +60,8 @@ public class AutomaticPlatforms : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (!other.CompareTag("Player")) return;
+
         other.transform.parent = null;
     }
 }

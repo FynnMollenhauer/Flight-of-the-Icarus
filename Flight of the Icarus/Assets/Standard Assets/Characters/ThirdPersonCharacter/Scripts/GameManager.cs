@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     private GameObject[] playerCharacters;
 
+    public GameObject bigButtonTarget;
+    public GameObject bigButtonTarget1;
+
     public int IkeHealth;
     public int OtisHealth;
 
@@ -25,6 +28,12 @@ public class GameManager : MonoBehaviour
     public float otisAntigrav;
 
     public int keysCollected;
+
+    public int bigButtonActivations;
+
+    public bool flashlightPickedUp;
+
+    public int activeItem;
 
     public Vector3 ikeLastCheckpoint;
     public Vector3 otisLastCheckpoint;
@@ -52,6 +61,12 @@ public class GameManager : MonoBehaviour
 
         keysCollected = 0;
 
+        bigButtonActivations = 0;
+
+        activeItem = 0;
+
+        flashlightPickedUp = false;
+
         ikeLastCheckpoint = new Vector3(3, -1.5f, -65.5f);
         otisLastCheckpoint = new Vector3(3, -1.5f, -65.5f);
 
@@ -71,8 +86,9 @@ public class GameManager : MonoBehaviour
 
         if (sceneName == "PlatformingLevel")
         {
+
             if (Input.GetKeyDown(KeyCode.C))
-        {
+            {
                 for (int i = 0; i < playerCharacters.Length; i++)
                 {
                     playerCharacters[i].GetComponent<FollowHandHolding>().isHandHolding = false;
@@ -80,6 +96,45 @@ public class GameManager : MonoBehaviour
 
                     playerCharacters[i].GetComponent<ThirdPersonUserControl>().isActivePlayer = !playerCharacters[i].GetComponent<ThirdPersonUserControl>().isActivePlayer;
                 }
+            }
+
+
+            if (bigButtonActivations >= 3)
+            {
+                bigButtonTarget.SetActive(true);
+                bigButtonTarget1.SetActive(false);
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                activeItem += 1;
+
+                if (flashlightPickedUp == false && activeItem > 1)
+                {
+                    activeItem = 0;
+                }
+                else if (flashlightPickedUp == true && activeItem > 2)
+                {
+                    activeItem = 0;
+                }
+            }
+
+
+            if (activeItem == 0)
+            {
+               GameObject.Find("Ike").GetComponent<ThirdPersonCharacter>().m_JumpPower = 15;
+               GameObject.Find("FlashlightOn").GetComponent<Light>().enabled = false;
+            }
+            else if (activeItem == 1)
+            {
+                GameObject.Find("Ike").GetComponent<ThirdPersonCharacter>().m_JumpPower = 10;
+                GameObject.Find("FlashlightOn").GetComponent<Light>().enabled = false;
+            }
+            else if (activeItem == 2 && flashlightPickedUp == true)
+            {
+                GameObject.Find("FlashlightOn").GetComponent<Light>().enabled = true;
+                GameObject.Find("Ike").GetComponent<ThirdPersonCharacter>().m_JumpPower = 10;
             }
         }
     }

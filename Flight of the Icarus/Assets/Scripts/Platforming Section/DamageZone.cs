@@ -47,8 +47,12 @@ public class DamageZone : MonoBehaviour
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().ikeAntigrav = 0;
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().otisAntigrav = 0;
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().keysCollected = 0;
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().bigButtonActivations = 0;
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().bigButtonTarget = GameObject.FindGameObjectWithTag("BigButtonTarget");
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().bigButtonTarget1 = GameObject.FindGameObjectWithTag("BigButtonTarget1");
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().ikeLastCheckpoint = new Vector3(3, -1.5f, -65.5f);
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().otisLastCheckpoint = new Vector3(3, -1.5f, -65.5f);
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().flashlightPickedUp = false;
 
         SceneManager.LoadScene(sceneName);
     }

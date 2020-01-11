@@ -10,6 +10,10 @@ TagManager:
   - Townspeople
   - LeftWall
   - RightWall
+  - BigButtonTarget
+  - BigButtonTarget1
+  - InteractibleDebris
+  - BaseballBat
   layers:
   - Default
   - TransparentFX
