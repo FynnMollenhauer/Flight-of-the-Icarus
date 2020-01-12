@@ -44,7 +44,6 @@ public class DebrisAmmo : MonoBehaviour
         if (isAwaitingInput == true && Input.GetKey(KeyCode.E))
         {
             timePassed += Time.deltaTime;
-            Debug.Log(timePassed);
         }
 
         if (Input.GetKeyUp(KeyCode.E))

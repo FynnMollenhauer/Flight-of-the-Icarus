@@ -24,8 +24,8 @@ public class Button : MonoBehaviour
             if (isBigButton == true)
             {
                 GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().bigButtonActivations += 1;
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().bigButtonTarget = GameObject.FindGameObjectWithTag("BigButtonTarget");
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().bigButtonTarget1 = GameObject.FindGameObjectWithTag("BigButtonTarget1");
+                GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().bigButtonTarget = GameObject.Find("GameManagerHelper").GetComponent<GameManagerHelper>().bigButtonTarget;
+                GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().bigButtonTarget1 = GameObject.Find("GameManagerHelper").GetComponent<GameManagerHelper>().bigButtonTarget1;
             }
             else
             {

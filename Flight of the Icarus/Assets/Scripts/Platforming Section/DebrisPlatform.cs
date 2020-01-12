@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.ThirdPerson;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class DebrisPlatform : MonoBehaviour
@@ -49,7 +50,11 @@ public class DebrisPlatform : MonoBehaviour
         {
             other.transform.position = transform.position + offset;
         }
-        
+        else if (other.GetComponent<ThirdPersonUserControl>().isActivePlayer == false && other.name == "Otis")
+        {
+            other.transform.position = transform.position + offset;
+        }
+
     }
 
 
@@ -58,7 +63,6 @@ public class DebrisPlatform : MonoBehaviour
         if (isAwaitingInput == true && Input.GetKey(KeyCode.E))
         {
             timePassed += Time.deltaTime;
-            Debug.Log(timePassed);
         }
 
         if (Input.GetKeyUp(KeyCode.E))

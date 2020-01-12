@@ -67,8 +67,8 @@ public class GameManager : MonoBehaviour
 
         flashlightPickedUp = false;
 
-        ikeLastCheckpoint = new Vector3(3, -1.5f, -65.5f);
-        otisLastCheckpoint = new Vector3(3, -1.5f, -65.5f);
+        ikeLastCheckpoint = new Vector3(5, -1.5f, -57f);
+        otisLastCheckpoint = new Vector3(4, -1.5f, -58f);
 
         if (ResetAmount >= FallChance)
         {

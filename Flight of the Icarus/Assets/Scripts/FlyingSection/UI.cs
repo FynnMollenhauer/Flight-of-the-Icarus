@@ -17,9 +17,9 @@ public class UI : MonoBehaviour
 
     void Update()
     {
-        health.text = "Health:" + GameObject.FindGameObjectWithTag("Player").GetComponent<ContraptionController>().health;
-        antigrav.text = "Antigrav:" + GameObject.FindGameObjectWithTag("Player").GetComponent<ContraptionController>().antigravCollected;
-        passengers.text = "Townspeople:" + (3 - GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().FallenPassengers);
+        health.text = "Health: " + GameObject.FindGameObjectWithTag("Player").GetComponent<ContraptionController>().health;
+        antigrav.text = "Antigrav: " + GameObject.FindGameObjectWithTag("Player").GetComponent<ContraptionController>().antigravCollected;
+        passengers.text = "Townspeople: " + (3 - GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().FallenPassengers);
 
     }
 }
