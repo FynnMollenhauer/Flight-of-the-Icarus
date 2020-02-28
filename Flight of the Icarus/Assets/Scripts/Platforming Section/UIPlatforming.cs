@@ -13,11 +13,10 @@ public class UIPlatforming : MonoBehaviour
     public Text keysCollected;
     public Text activeItem;
     public Text activePlayer;
+    public Button seeControls;
+    public Image controls;
 
-    void Start()
-    {
-        
-    }
+    public bool controlsActive;
 
 
     void Update()
@@ -52,5 +51,20 @@ public class UIPlatforming : MonoBehaviour
             activePlayer.text = "Active Player: Otis";
         }
 
+    }
+
+
+    public void ShowControls()
+    {
+        if (controlsActive == true)
+        {
+            controls.gameObject.SetActive(false);
+            controlsActive = false;
+        }
+        else if (controlsActive == false)
+        {
+            controls.gameObject.SetActive(true);
+            controlsActive = true;
+        }
     }
 }

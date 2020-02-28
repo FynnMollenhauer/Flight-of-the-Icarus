@@ -8,12 +8,10 @@ public class UI : MonoBehaviour
     public Text health;
     public Text antigrav;
     public Text passengers;
+    public Button seeControls;
+    public Image controls;
 
-    void Start()
-    {
-        
-    }
-
+    public bool controlsActive;
 
     void Update()
     {
@@ -22,4 +20,18 @@ public class UI : MonoBehaviour
         passengers.text = "Townspeople: " + (3 - GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().FallenPassengers);
 
     }
+
+    public void ShowControls()
+    {
+        if (controlsActive == true)
+        {
+            controls.gameObject.SetActive(false);
+            controlsActive = false;
+        }
+        else if (controlsActive == false)
+        {
+            controls.gameObject.SetActive(true);
+            controlsActive = true;
+        }
+    } 
 }

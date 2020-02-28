@@ -49,6 +49,11 @@ public class Terminal : MonoBehaviour
             wasUsed = true;
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
             gameObject.transform.GetChild(1).gameObject.SetActive(false);
+
+            if (gameObject.name == "Terminal (4)")
+            {
+                gameObject.GetComponent<AudioSource>().Play();
+            }
             if (enable == true)
             {
                 target0.SetActive(true);

@@ -27,6 +27,8 @@ public class LockedDoor : MonoBehaviour
         if (isReadyForInput == true && Input.GetKey(KeyCode.E) && GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().keysCollected >= 1)
         {
             GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().keysCollected -= 1;
+            GameObject.Find("Ike").GetComponent<AudioSource>().Play();
+            GameObject.Find("Otis").GetComponent<AudioSource>().Play();
             gameObject.SetActive(false);
         }
 
